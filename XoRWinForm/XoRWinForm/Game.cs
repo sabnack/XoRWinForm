@@ -83,6 +83,7 @@ namespace XoRWinForm
                 }
                 MessageBox.Show(str2);
                 this.Close();
+                return;
             }
 
             if (_moveCount == 9)
