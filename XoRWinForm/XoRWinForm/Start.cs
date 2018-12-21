@@ -16,6 +16,7 @@ namespace XoRWinForm
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+
           //  Load += LoadEvent;
         }
 
@@ -23,7 +24,14 @@ namespace XoRWinForm
         {
             var game = new Game(this);
             game.Show();
-           // this.Hide();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var game = new Game(this,1);
+            game.Show();
+            this.Hide();
         }
 
         //private void Start_Load(object sender, EventArgs e)
