@@ -37,6 +37,7 @@ namespace XoRWinForm
             _firstPlayerMove = true;
             _moveCount = 0;
         }
+
         private bool TestWin()
         {
             if (Math.Abs(_gameField[0, 0] + _gameField[0, 1] + _gameField[0, 2]) == 3) return true;
@@ -52,17 +53,9 @@ namespace XoRWinForm
 
         private void Button_Click(object sender, EventArgs e)
         {
-            string str;
-            int flag = 1;
-            if (_firstPlayerMove)
-            {
-                str = "X";
-            }
-            else
-            {
-                str = "O";
-                flag = -1;
-            }
+            string str = _firstPlayerMove ? "X":"O";
+            int flag = _firstPlayerMove ? 1 : -1;
+
             var tmp = (sender as Button).Name.Split(new char[] { ',' });
             _gameField[int.Parse(tmp[0]), int.Parse(tmp[1])] = flag;
             (sender as Button).Text = str;
@@ -72,16 +65,7 @@ namespace XoRWinForm
 
             if (TestWin())
             {
-                string str2;
-                if (_firstPlayerMove)
-                {
-                    str2 = "First Player Win!";
-                }
-                else
-                {
-                    str2 = "Second Player Win!";
-                }
-                MessageBox.Show(str2);
+                MessageBox.Show(_firstPlayerMove ? "First Player Win!" : "Second Player Win!");
                 this.Close();
                 return;
             }
@@ -92,14 +76,7 @@ namespace XoRWinForm
                 this.Close();
             }
 
-            if (_firstPlayerMove)
-            {
-                _firstPlayerMove = false;
-            }
-            else
-            {
-                _firstPlayerMove = true;
-            }
+            _firstPlayerMove = _firstPlayerMove ? false : true;
         }
     }
 }
