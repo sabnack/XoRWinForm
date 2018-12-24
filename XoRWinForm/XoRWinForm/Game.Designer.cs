@@ -1,6 +1,6 @@
 ﻿namespace XoRWinForm
 {
-    partial class Game
+    partial class Xor
     {
         /// <summary>
         /// Required designer variable.
@@ -154,7 +154,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Game";
-            this.Text = "Game";
+            this.Text = "XoR";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Game_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

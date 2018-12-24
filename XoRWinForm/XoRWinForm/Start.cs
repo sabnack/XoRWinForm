@@ -22,14 +22,14 @@ namespace XoRWinForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var game = new Game(this);
+            var game = new Xor(this);
             game.Show();
             this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var game = new Game(this,1);
+            var game = new Xor(this,1);
             game.Show();
             this.Hide();
         }
