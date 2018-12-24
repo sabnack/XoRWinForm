@@ -25,6 +25,7 @@ namespace XoRWinForm
         public Xor(Start start, int level = 0)
         {
             _start = start;
+            _level = level;
             InitializeComponent();
             InitButtonsName();
             button1.Click += Button_Click;
@@ -44,9 +45,13 @@ namespace XoRWinForm
             var tmp = (sender as Button).Name.Split(new char[] { ',' });
             var p = new Point() { X = int.Parse(tmp[0]), Y = int.Parse(tmp[1]) };
 
-            if (!Game.Wined && !Game.TestDeadHeat())
+            Game.MakeMove(p);
+            if (_level != 0)
             {
-                Game.PcMove();
+                if (!Game.Wined && !Game.TestDeadHeat())
+                {
+                    Game.PcMove();
+                }
             }
 
             DrawField();
