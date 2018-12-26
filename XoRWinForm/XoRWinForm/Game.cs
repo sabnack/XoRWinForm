@@ -12,9 +12,11 @@ namespace XoRWinForm
         public int[,] GameField { get; set; }
         public bool FirstPlayerMove { get; set; }
         public bool Wined { get; private set; }
+        public int Level { get; private set; }
 
-        public Game()
+        public Game(int level)
         {
+            Level = level;
             GameField = new int[3, 3];
             FirstPlayerMove = true;
         }
@@ -33,30 +35,6 @@ namespace XoRWinForm
                 FirstPlayerMove = !FirstPlayerMove;
             }
 
-        }
-
-        public void PcMove()
-        {
-            int flag = FirstPlayerMove ? 1 : -1;
-            var rnd = new Random();
-            int x = rnd.Next(3);
-            int y = rnd.Next(3);
-
-            while (GameField[x, y] != 0)
-            {
-                x = rnd.Next(3);
-                y = rnd.Next(3);
-            }
-            GameField[x, y] = flag;
-
-            if (TestWin())
-            {
-                Wined = true;
-            }
-            else
-            {
-                FirstPlayerMove = !FirstPlayerMove;
-            }
         }
 
         public bool TestDeadHeat()
@@ -86,7 +64,7 @@ namespace XoRWinForm
 
         public Game Clone()
         {
-            return new Game { GameField = (int[,])GameField.Clone(), FirstPlayerMove = FirstPlayerMove, Wined = Wined };
+            return new Game(Level) { GameField = (int[,])GameField.Clone(), FirstPlayerMove = FirstPlayerMove, Wined = Wined };
         }
     }
 }

@@ -14,7 +14,6 @@ namespace XoRWinForm
     {
         private Start _start { get; }
         private int _level { get; }
-
         private Game Game { get; set; }
 
         public Xor()
@@ -27,7 +26,7 @@ namespace XoRWinForm
             _start = start;
             _level = level;
             InitializeComponent();
-            InitButtonsName();
+        //    InitButtonsName();
             button1.Click += Button_Click;
             button2.Click += Button_Click;
             button3.Click += Button_Click;
@@ -37,7 +36,7 @@ namespace XoRWinForm
             button7.Click += Button_Click;
             button8.Click += Button_Click;
             button9.Click += Button_Click;
-            Game = new Game();
+            Game = new Game(_level);
             Game.MakeMove(new Point(1, 1));
             DrawField();
         }

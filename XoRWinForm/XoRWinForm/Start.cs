@@ -34,6 +34,21 @@ namespace XoRWinForm
             this.Hide();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var game = new Xor(this, 2);
+            game.Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var game = new Xor(this, 3);
+            game.Show();
+            this.Hide();
+
+        }
+
         //private void Start_Load(object sender, EventArgs e)
         //{
         //    Button helloButton = new Button();

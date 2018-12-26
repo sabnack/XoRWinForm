@@ -9,6 +9,7 @@ namespace XoRWinForm
 {
     class AI
     {
+     //   private Move bestMove;
 
         public Move GetBestMove(Game game)
         {
@@ -18,9 +19,15 @@ namespace XoRWinForm
 
             EmptyCell.ForEach(x => BestMoves.Add(GetBestMove(game, x)));
 
-            var bestMove = BestMoves.FirstOrDefault(x => x.Score > 0);
+            var bestMove = new Move();
+            bestMove = default;
 
-            if (bestMove == null)
+            if (game.Level > 1)
+            {
+                bestMove = BestMoves.FirstOrDefault(x => x.Score > 0);
+            }
+
+            if (bestMove == null && game.Level > 2)// || bestMove.Score == 0 && game.Level > 2)
             {
                 bestMove = BestMoves.FirstOrDefault(x => x.Score < 0);
             }
