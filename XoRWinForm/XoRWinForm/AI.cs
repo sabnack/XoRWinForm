@@ -16,10 +16,7 @@ namespace XoRWinForm
             var BestMoves = new List<Move>();
             if (EmptyCell.Count == 0) return null;
 
-            foreach (var item in EmptyCell)
-            {
-                BestMoves.Add(GetBestMove(game, item));
-            }
+            EmptyCell.ForEach(x => BestMoves.Add(GetBestMove(game, x)));
 
             var bestMove = BestMoves.FirstOrDefault(x => x.Score > 0);
 
