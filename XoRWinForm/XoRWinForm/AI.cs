@@ -21,28 +21,14 @@ namespace XoRWinForm
                 BestMoves.Add(GetBestMove(game, item));
             }
 
-            var bestMove = new Move();
+            var bestMove = BestMoves.FirstOrDefault(x => x.Score > 0);
 
-            foreach (var item in BestMoves)
+            if (bestMove == null)
             {
-                if (item.Score > 0)// && game.FirstPlayerMove)
-                {
-                    bestMove = item;
-                }
+                bestMove = BestMoves.FirstOrDefault(x => x.Score < 0);
             }
 
-            if (bestMove.Score == 0)
-            {
-                foreach (var item in BestMoves)
-                {
-                    if (bestMove.Score > item.Score)// && game.FirstPlayerMove)
-                    {
-                        bestMove = item;
-                    }
-                }
-            }
-
-            if (bestMove.Score == 0)
+            if (bestMove == null)
             {
                 bestMove = BestMoves[new Random().Next(BestMoves.Count)];
             }
