@@ -38,6 +38,8 @@ namespace XoRWinForm
             button8.Click += Button_Click;
             button9.Click += Button_Click;
             Game = new Game();
+            Game.MakeMove(new Point(1, 1));
+            DrawField();
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -50,7 +52,8 @@ namespace XoRWinForm
             {
                 if (!Game.Wined && !Game.TestDeadHeat())
                 {
-                    Game.PcMove();
+                    var move = new AI().GetBestMove(Game);
+                    Game.MakeMove(new Point(move.P.X, move.P.Y));
                 }
             }
 

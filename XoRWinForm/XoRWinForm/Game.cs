@@ -11,7 +11,6 @@ namespace XoRWinForm
     {
         public int[,] GameField { get; set; }
         public bool FirstPlayerMove { get; set; }
-        //  private Point p { get; set; }
         public bool Wined { get; private set; }
 
         public Game()
@@ -83,6 +82,11 @@ namespace XoRWinForm
             if (Math.Abs(GameField[0, 0] + GameField[1, 1] + GameField[2, 2]) == 3) return true;
             if (Math.Abs(GameField[0, 2] + GameField[1, 1] + GameField[2, 0]) == 3) return true;
             return false;
+        }
+
+        public Game Clone()
+        {
+            return new Game { GameField = (int[,])GameField.Clone(), FirstPlayerMove = FirstPlayerMove, Wined = Wined };
         }
     }
 }
