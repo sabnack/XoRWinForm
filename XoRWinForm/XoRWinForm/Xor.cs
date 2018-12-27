@@ -26,7 +26,7 @@ namespace XoRWinForm
             _start = start;
             _level = level;
             InitializeComponent();
-        //    InitButtonsName();
+            //    InitButtonsName();
             button1.Click += Button_Click;
             button2.Click += Button_Click;
             button3.Click += Button_Click;
@@ -37,7 +37,10 @@ namespace XoRWinForm
             button8.Click += Button_Click;
             button9.Click += Button_Click;
             Game = new Game(_level);
-            Game.MakeMove(new Point(1, 1));
+            if (_level != 0)
+            {
+                Game.MakeMove(new Point(1, 1));
+            }
             DrawField();
         }
 
